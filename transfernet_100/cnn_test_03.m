@@ -1,0 +1,120 @@
+clear all;close all;clc;
+
+load('E:\¡ı—Ó\transfernet_100\100%£ﬂmiddle.mat');
+load('E:\¡ı—Ó\transfernet_100\80%£ﬂmiddle.mat');
+load('E:\¡ı—Ó\transfernet_100\60%£ﬂmiddle.mat');
+load('E:\¡ı—Ó\transfernet_100\40%£ﬂmiddle.mat');
+% load('E:\¡ı—Ó\transfernet_100\labels.mat');
+
+labels=zeros(1,600); 
+% labels(1:20) = 5;
+% labels(21:40) = 9;
+% labels(41:60) = 11;
+% labels(61:80) = 13;
+% labels(81:100) = 20;
+% labels(101:120) = 27;
+% labels(121:140) = 28;
+% labels(141:160) = 29;
+% labels(161:180) = 55;
+% labels(181:200) = 58;
+% labels(201:220) = 65;
+% labels(221:240) = 71;
+% labels(241:260) = 74;
+% labels(261:280) = 76;
+% labels(281:300) = 78;
+% labels(301:320) = 89;
+% labels(321:340) = 90;
+% labels(341:360) = 92;
+% labels(361:380) = 98;
+% labels(381:400) = 101;
+% labels(401:420) = 116;
+% labels(421:440) = 133;
+% labels(441:460) = 138;
+% labels(461:480) = 140;
+% labels(481:500) = 145;
+% labels(501:520) = 149;
+% labels(521:540) = 159;
+% labels(541:560) = 202;
+% labels(561:580) = 218;
+% labels(581:600) = 227;
+
+
+% labels(1:20) = 7;
+% labels(21:40) = 10;
+% labels(41:60) = 23;
+% labels(61:80) = 36;
+% labels(81:100) = 41;
+% labels(101:120) = 42;
+% labels(121:140) = 44;
+% labels(141:160) = 59;
+% labels(161:180) = 64;
+% labels(181:200) = 66;
+% labels(201:220) = 67;
+% labels(221:240) = 75;
+% labels(241:260) = 77;
+% labels(261:280) = 79;
+% labels(281:300) = 96;
+% labels(301:320) = 114;
+% labels(321:340) = 136;
+% labels(341:360) = 146;
+% labels(361:380) = 147;
+% labels(381:400) = 167;
+% labels(401:420) = 171;
+% labels(421:440) = 179;
+% labels(441:460) = 200;
+% labels(461:480) = 223;
+% labels(481:500) = 229;
+% labels(501:520) = 234;
+% labels(521:540) = 238;
+% labels(541:560) = 242;
+% labels(561:580) = 244;
+% labels(581:600) = 245;
+
+
+% labels(1:20) = 22;
+% labels(21:40) = 26;
+% labels(41:60) = 33;
+% labels(61:80) = 35;
+% labels(81:100) = 38;
+% labels(101:120) = 40;
+% labels(121:140) = 48;
+% labels(141:160) = 52;
+% labels(161:180) = 63;
+% labels(181:200) = 72;
+% labels(201:220) = 93;
+% labels(221:240) = 94;
+% labels(241:260) = 104;
+% labels(261:280) = 112;
+% labels(281:300) = 117;
+% labels(301:320) = 124;
+% labels(321:340) = 125;
+% labels(341:360) = 129;
+% labels(361:380) = 135;
+% labels(381:400) = 143;
+% labels(401:420) = 154;
+% labels(421:440) = 158;
+% labels(441:460) = 176;
+% labels(461:480) = 181;
+% labels(481:500) = 192;
+% labels(501:520) = 201;
+% labels(521:540) = 224;
+% labels(541:560) = 230;
+% labels(561:580) = 232;
+% labels(581:600) = 250;
+
+pred = zeros(1,600);
+for i = 1:600
+%     result = result_100(:,i)+0.8*result_80(:,i)+0.6*result_60(:,i)+0.4*result_40(:,i);
+
+%         result = result_100_small(:,i)+result_80_small(:,i)+result_60_small(:,i)+result_40_small(:,i);
+        result = result_100_middle(:,i)+result_80_middle(:,i)+result_60_middle(:,i)+result_40_middle(:,i);
+%          result = result_100_large(:,i)+result_80_large(:,i)+result_60_large(:,i)+result_40_large(:,i);
+%       result = 0.1*result_100(:,i)+0.9*result_80(:,i);
+%          result = 1*result_100(:,i)+0.7*result_80(:,i)+0.7*result_60(:,i);
+%       a = max(result_100(:,i),result_80(:,i));
+%      b = max(result_60(:,i),a);
+%      result = max(result_40(:,i),b);
+    [~,result] = max(result);
+    pred(i) = result;
+end
+mean(pred==labels)
